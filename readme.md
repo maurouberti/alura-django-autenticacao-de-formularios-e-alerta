@@ -31,4 +31,20 @@ urlpatterns = [
 Adicionar as views em **usuarios/views.py**  
 Criar arquivos html em **templates/usuarios/**
 
+# 2 - Formulários no django
+
+Criar arquivo **usuarios/forms.py**  
+Alterar arquivo e view **usuarios/views.py**
+
+```
+...
+from usuarios.forms import LoginForms
+
+def login(request):
+    form = LoginForms()
+    return render(request, "usuarios/login.html", {"form": form})
+...
+```
+
+Alterar arquivos html **templetes/usuarios/**
 
