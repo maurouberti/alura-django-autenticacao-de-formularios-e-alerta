@@ -48,3 +48,32 @@ def login(request):
 
 Alterar arquivos html **templetes/usuarios/**
 
+# 3 - Autenticação de usuários
+
+Alterar arquivo **usuarios/views.py** para adicionar as validações e mensagens.
+Alterar arquivo **templates/galeria/base.html** e adicionar as mensagens.
+
+```
+{% for message in messages %}
+    <div class="alert alert-primary">
+        <p id="messages">{{message}}</p>
+    </div>
+{% endfor %}
+```
+
+Opção de logout:  
+Alterar arquivo **usuarios/views.py**
+
+```
+def logout(request):
+    auth.logout(request)
+    messages.success(request, "Logout efetuado com sucesso!")
+    return redirect('login')
+```
+
+Alterar aarquivo **usuarios/urls.py**
+
+```
+path('logout', logout, name='logout'),
+```
+
