@@ -1,7 +1,9 @@
 ![Static Badge](https://img.shields.io/badge/Alura-%230b182c)
 ![Static Badge](https://img.shields.io/badge/Django-4.2.13-%23092E20?logoColor=ffffff)
 
-# 1 - App usuários
+# Passo a passo do curso
+
+## 1 - App usuários
 
 Criar novo app
 
@@ -31,7 +33,7 @@ urlpatterns = [
 Adicionar as views em **usuarios/views.py**  
 Criar arquivos html em **templates/usuarios/**
 
-# 2 - Formulários no django
+## 2 - Formulários no django
 
 Criar arquivo **usuarios/forms.py**  
 Alterar arquivo e view **usuarios/views.py**
@@ -48,7 +50,7 @@ def login(request):
 
 Alterar arquivos html **templetes/usuarios/**
 
-# 3 - Autenticação de usuários
+## 3 - Autenticação de usuários
 
 Alterar arquivo **usuarios/views.py** para adicionar as validações e mensagens.
 Alterar arquivo **templates/galeria/base.html** e adicionar as mensagens.
@@ -77,7 +79,7 @@ Alterar aarquivo **usuarios/urls.py**
 path('logout', logout, name='logout'),
 ```
 
-# 4 - Validações
+## 4 - Validações
 
 Alterar o arquivo **usuarios/forms.py**, adicionando regras dde vaalidações do formulário.
 
@@ -110,3 +112,19 @@ Alterar arquivo **templates/usuarios/cadastro.html** para colocar as mensagens d
 </div>
 {% endfor %}
 ```
+
+## 5 - Refatoração
+
+Criar arquivo **templates/galeria/partials/_alertas.html**  
+Alterar arquivo **templates/galeria/base.html**
+Alterar arquivo **setup/settings.py**
+
+```
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+    messages.SUCCESS: 'success'
+}
+```
+
+Alterar pasta **galeria/partions** para **partions**
