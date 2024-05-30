@@ -77,3 +77,36 @@ Alterar aarquivo **usuarios/urls.py**
 path('logout', logout, name='logout'),
 ```
 
+# 4 - Validações
+
+Alterar o arquivo **usuarios/forms.py**, adicionando regras dde vaalidações do formulário.
+
+```
+def clean_nome_cadastro(self):
+    nome = self.cleaned_data.get('nome_cadastro')
+    if nome:
+        nome = nome.strip()
+        if ' ' in nome:
+            raise forms.ValidationError('Espaços não são permitidos nesse campo')
+        else:
+            return nome
+
+def clean_senha_2(self):
+    senha_1 = self.cleaned_data.get('senha_1')
+    senha_2 = self.cleaned_data.get('senha_2')
+    if senha_1 and senha_2:
+        if senha_1 != senha_2:
+            raise forms.ValidationError('Senhas não são iguais')
+        else:
+            return senha_2
+```
+
+Alterar arquivo **templates/usuarios/cadastro.html** para colocar as mensagens de erro de validações.
+
+```
+{% for error in field.errors %}
+<div class="alert alert-danger">
+    {{error}}
+</div>
+{% endfor %}
+```
